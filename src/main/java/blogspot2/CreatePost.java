@@ -1,4 +1,4 @@
-package blogspot;
+package blogspot2;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
@@ -9,7 +9,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.googlecode.objectify.ObjectifyService;
 
-import blogspot.Post;
+import blogspot2.Post;
 
 import java.io.IOException;
 

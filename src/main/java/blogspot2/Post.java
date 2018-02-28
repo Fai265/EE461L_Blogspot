@@ -1,4 +1,4 @@
-package blogspot;
+package blogspot2;
 
 import java.util.Date;
 
