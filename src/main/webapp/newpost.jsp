@@ -22,14 +22,14 @@
     <h2>Write a new post!</h2>
     <br>
     <br>
-    <form>
+    <form action="/blogspot.jsp" method="post">
       Title <br>
       <textarea name="title" rows="1" cols="40"></textarea> <br>
       Post <br>
-      <textarea name="body" rows="4" cols="60"></textarea> <br>
+      <textarea name="content" rows="4" cols="60"></textarea> <br>
       <input type="submit" value="Post"/>
       <input type="reset" value="Cancel" />
-      <!-- <input type="hidden" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/> -->
+      <input type="hidden" name="user" value="${fn:escapeXml(user)}"/>
     </form>
   </body>
 </html>
