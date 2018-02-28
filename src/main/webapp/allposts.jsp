@@ -15,48 +15,10 @@
   <head>
     <!-- <link type="text/css" rel="stylesheet" href="/stylesheets/main.css"/> -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>The Blag (not Blog)</title>
+    <title>All Blag Posts</title>
   </head>
   <body>
-    <h1>Welcome to The Blag!</h1>
-    <img src="https://imgs.xkcd.com/comics/mispronouncing.png" alt="The Joke">
-    <br>
-    <!-- login stuff; basically how it was in the old one -->
-    <%
-    	String guestbookName = request.getParameter("guestbookName");
-    	if (guestbookName == null) {
-    	    guestbookName = "default";
-    	}
-    	pageContext.setAttribute("guestbookName", guestbookName);
-    	UserService userService = UserServiceFactory.getUserService();
-    	User user = userService.getCurrentUser();
-    	if (user != null) {
-    	  pageContext.setAttribute("user", user);
-	%>
-
-	<p>Hello, ${fn:escapeXml(user.nickname)}! (You can
-	<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
-
-	<%
-	    } else {
-	%>
-
-	<p>Hello!
-	<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
-	to create new posts.</p>
-
-	<%
-    	}
-	%>
-    <br>
-    <br>
-    <!-- new post button if signed in; directs to post page -->
-    <% if (user != null) { %>
-    	<form action="/newpost.jsp">
-    		<input type="submit" value="New Post"/>
-    	</form>
-    <% } %>
-    <!-- list of posts -->
+    <h1>All Posts</h1>
     <% 
     ObjectifyService.register(Post.class);
     List<Post> posts = ObjectifyService.ofy().load().type(Post.class).list();   
@@ -73,10 +35,10 @@
         <h5>Posts: </h5>
 
         <%
-        for (int i = 0; i < 5; i++) {
+        for (Post post : posts) {
             pageContext.setAttribute("post_content",
-                                     posts.get(i).getContent());
-            if (posts.get(i).getUser() == null) {
+                                     post.getContent());
+            if (post.getUser() == null) {
                 %>
 
                 <p>An anonymous person wrote:</p>
@@ -84,7 +46,7 @@
                 <%
             } else {
                 pageContext.setAttribute("post_user",
-                                         posts.get(i).getUser());
+                                         post.getUser());
                 %>
 
                 <p><b>${fn:escapeXml(post_title)}</b> 
@@ -100,11 +62,9 @@
         }
     }
     %>
-    <!-- See All Posts button -->
     <br>
-    <form action="/allposts.jsp">
-      <input type="submit" value="See All Posts" />
+    <form action="/blogspot.jsp">
+      <input type="submit" value="Back" />
     </form>
-    
   </body>
 </html>
