@@ -74,7 +74,8 @@
 
         <%
         for (int i = 0; i < 5; i++) {
-            pageContext.setAttribute("post_content",
+        	if (i < posts.size()){
+            pageContext.setAttribute("content",
                                      posts.get(i).getContent());
             if (posts.get(i).getUser() == null) {
                 %>
@@ -83,20 +84,22 @@
 
                 <%
             } else {
-                pageContext.setAttribute("post_user",
+                pageContext.setAttribute("user",
                                          posts.get(i).getUser());
+                pageContext.setAttribute("title", posts.get(i).getTitle());
                 %>
 
-                <p><b>${fn:escapeXml(post_title)}</b> 
-                by ${fn:escapeXml(post_user.nickname)}</p>
+                <p><b>${fn:escapeXml(title)}</b> 
+                by ${fn:escapeXml(user.nickname)}</p>
 
                 <%
             }
             %>
 
-            <blockquote>${fn:escapeXml(post_content)}</blockquote>
+            <blockquote>${fn:escapeXml(content)}</blockquote>
 
             <%
+        	}
         }
     }
     %>

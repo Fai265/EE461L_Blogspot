@@ -36,7 +36,7 @@
 
         <%
         for (Post post : posts) {
-            pageContext.setAttribute("post_content",
+            pageContext.setAttribute("content",
                                      post.getContent());
             if (post.getUser() == null) {
                 %>
@@ -45,18 +45,19 @@
 
                 <%
             } else {
-                pageContext.setAttribute("post_user",
+                pageContext.setAttribute("user",
                                          post.getUser());
+                pageContext.setAttribute("title", post.getTitle());
                 %>
 
-                <p><b>${fn:escapeXml(post_title)}</b> 
-                by ${fn:escapeXml(post_user.nickname)}</p>
+                <p><b>${fn:escapeXml(title)}</b> 
+                by ${fn:escapeXml(user.nickname)}</p>
 
                 <%
             }
             %>
 
-            <blockquote>${fn:escapeXml(post_content)}</blockquote>
+            <blockquote>${fn:escapeXml(content)}</blockquote>
 
             <%
         }

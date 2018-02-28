@@ -22,7 +22,7 @@
     <h2>Write a new post!</h2>
     <br>
     <br>
-    <form action="/blogspot.jsp" method="post">
+    <form action="/blogspot" method="post">
       Title <br>
       <textarea name="title" rows="1" cols="40"></textarea> <br>
       Post <br>

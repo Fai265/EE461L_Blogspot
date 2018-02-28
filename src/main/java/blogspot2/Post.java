@@ -29,6 +29,9 @@ public class Post implements Comparable<Post> {
     public User getUser() {
         return user;
     }
+    public String getTitle() {
+    	return title;
+    }
     public String getContent() {
         return content;
     }
@@ -36,9 +39,9 @@ public class Post implements Comparable<Post> {
     @Override
     public int compareTo(Post other) {
         if (date.after(other.date)) {
-            return 1;
-        } else if (date.before(other.date)) {
             return -1;
+        } else if (date.before(other.date)) {
+            return 1;
         }
         return 0;
      }
