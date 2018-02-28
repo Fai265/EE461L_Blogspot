@@ -10,22 +10,26 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
     <!-- <link type="text/css" rel="stylesheet" href="/stylesheets/main.css"/> -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>The Blag (not Blog)</title>
+    <title>The Blag - New Post</title>
   </head>
   <body>
-    <h1>Welcome to The Blag!</h1>
-    <img src="https://imgs.xkcd.com/comics/mispronouncing.png" alt="The Joke">
-    <br>
-    <!-- login stuff; basically how it was in the old one -->
+    <h2>Write a new post!</h2>
     <br>
     <br>
-    <!-- new post button; directs to post page -->
-    <!-- list of posts -->
-    <!-- See All Posts button -->
+    <form>
+      Title <br>
+      <textarea name="title" rows="1" cols="40"></textarea> <br>
+      Post <br>
+      <textarea name="body" rows="4" cols="60"></textarea> <br>
+      <input type="submit" value="Post"/>
+      <input type="reset" value="Cancel" />
+      <!-- <input type="hidden" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/> -->
+    </form>
   </body>
 </html>
